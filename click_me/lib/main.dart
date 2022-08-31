@@ -49,6 +49,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _badcounter = 3;
+  
+  void _decrementCounter(){
+    setState((){
+    _badcounter--;
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -58,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      _decrementCounter();
     });
+
   }
 
   @override
@@ -106,15 +115,22 @@ class _MyHomePageState extends State<MyHomePage> {
               'Fun math',
             ),
             Text(
-              '$_counter -1 ',)
+              '$_counter',),
+
+            TextFormField(
+            decoration: const InputDecoration(
+              hintText: 'type anything',)
+            ),
+              
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'up',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      
     );
   }
 }
